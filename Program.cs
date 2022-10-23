@@ -46,13 +46,11 @@ namespace UrsuCalin3132b
             if(e.Key == Key.A)
             {
                 GL.Rotate(20, Vector3d.UnitZ);
-                GL.Translate(new Vector3(0, -0.01f, -1));
                 GL.Scale(new Vector3(0.8f, 0.8f, 0.8f));
             }
             if(e.Key == Key.D)
             {
                 GL.Rotate(-20, Vector3d.UnitZ);
-                GL.Translate(new Vector3(0,0.01f,1));
                 GL.Scale(new Vector3(1.2f, 1.2f, 1.2f));
                 
             }
