@@ -9,8 +9,10 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using OpenTK.Platform;
 
+
+
 namespace UrsuCalin3132b
-{
+{ 
     class SimpleWindow : GameWindow
     {
 
@@ -18,6 +20,14 @@ namespace UrsuCalin3132b
         public SimpleWindow() : base(800, 600)
         {
             KeyDown += Keyboard_KeyDown;
+            MouseMove += Mouse_MouseMove;
+            Mouse.SetPosition(Width / 2, Height / 2);
+        }
+
+        private void Mouse_MouseMove(object sender, MouseMoveEventArgs e)
+        {
+            GL.Rotate(e.X / 360f, Vector3.UnitZ) ;
+            Console.WriteLine($"X:{e.X} and Y:{e.Y}");
         }
 
         // Tratează evenimentul generat de apăsarea unei taste. Mecanismul standard oferit de .NET
@@ -32,7 +42,21 @@ namespace UrsuCalin3132b
                     this.WindowState = WindowState.Normal;
                 else
                     this.WindowState = WindowState.Fullscreen;
-        }
+
+            if(e.Key == Key.A)
+            {
+                GL.Rotate(20, Vector3d.UnitZ);
+                GL.Translate(new Vector3(0, -0.01f, -1));
+                GL.Scale(new Vector3(0.8f, 0.8f, 0.8f));
+            }
+            if(e.Key == Key.D)
+            {
+                GL.Rotate(-20, Vector3d.UnitZ);
+                GL.Translate(new Vector3(0,0.01f,1));
+                GL.Scale(new Vector3(1.2f, 1.2f, 1.2f));
+                
+            }
+        } 
 
         // Setare mediu OpenGL și încarcarea resurselor (dacă e necesar) - de exemplu culoarea de
         // fundal a ferestrei 3D.
@@ -52,7 +76,7 @@ namespace UrsuCalin3132b
 
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            GL.Ortho(-1.0, 1.0, -1.0, 1.0, 0.0, 4.0);
+            GL.Ortho(-1.0, 1.0, -1.0, 1.0, -10, 40.0);
         }
 
         // Secțiunea pentru "game logic"/"business logic". Tot ce se execută în această secțiune va fi randat
@@ -60,6 +84,8 @@ namespace UrsuCalin3132b
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
             // Momentan aplicația nu face nimic!
+
+            //GL.Rotate(22, Vector3d.UnitX);
         }
 
         // Secțiunea pentru randarea scenei 3D. Controlată de modulul logic din metoda ONUPDATEFRAME.
