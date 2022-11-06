@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Laborator 2\Laborator 2.cs" />
+    <Compile Include="Laborator3\Axes.cs" />
+    <Compile Include="Laborator3\Camera.cs" />
+    <Compile Include="Laborator3\Laborator 3.cs" />
+    <Compile Include="Laborator3\Triangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
